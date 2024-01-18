@@ -6,9 +6,7 @@ import { Directions, TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { GestureDetector, Gesture } from "react-native-gesture-handler";
-import Animated,  { SlideInLeft, 
-    BounceIn,
-    SlideInRight } from 'react-native-reanimated';
+import Animated,  { SlideInLeft, BounceIn, SlideInRight } from 'react-native-reanimated';
 
 const onboardingSteps = [
     {

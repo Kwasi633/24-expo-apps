@@ -1,11 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet, SafeAreaView } from "react-native";
-import { Link, Stack, router } from "expo-router";
+import { Stack, router } from "expo-router";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Directions, TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { GestureDetector, Gesture } from "react-native-gesture-handler";
+import Animated,  { SlideInLeft, 
+    BounceIn,
+    SlideInRight } from 'react-native-reanimated';
 
 const onboardingSteps = [
     {
@@ -19,7 +22,7 @@ const onboardingSteps = [
         description: 'Learn by building 24 projects with React Native and Expo'
     },
     {
-        icon: 'people-arrows',
+        icon: 'book-reader',
         title: 'Education For Children',
         description: 'Contribute to the fundraiser "Education for Children" to help Save the Children in the effort of providing education to every child'
     },
@@ -38,21 +41,29 @@ export default function OnboardingScreen() {
         }
     };
 
+    const onBack = () => {
+        const isFirstScreen = screenIndex === 0;
+        if (isFirstScreen) {
+            endOnboarding();
+        } else {
+            setScreenIndex(screenIndex - 1);
+        }
+    };
+
     const endOnboarding = () => {
         setScreenIndex(0);
         router.back();
     };
 
-    const fling = Gesture.Fling()
-    .direction(Directions.RIGHT | Directions.LEFT)
-    .onBegin((event) => {
-        console.log('Fling Start', event)
-    })
-    .onEnd((event) => {
-        console.log('Fling', event);
-        onContinue();
-    })
+    const swipeForward = Gesture.Fling()
+    .direction(Directions.LEFT)
+    .onEnd(onContinue)
 
+    const swipeBack = Gesture.Fling()
+    .direction(Directions.RIGHT)
+    .onEnd(onBack)
+
+    const swipes = Gesture.Simultaneous(swipeBack, swipeForward)
 
     return (
         <SafeAreaView style={styles.page}>
@@ -61,24 +72,41 @@ export default function OnboardingScreen() {
 
             <View style={styles.stepIndicatorContainer}>
                 {onboardingSteps.map((step, index) => (
-                    <View style={[
+                    <View 
+                    key={index}
+                    style={[
                         styles.stepIndicator,
                         { backgroundColor: index === screenIndex ? '#CEF202' : styles.stepIndicator.backgroundColor }
                     ]} />
                 ))}
             </View>
-            <GestureDetector gesture={fling}>
-            <View style={styles.pageContent}>
-                <FontAwesome5
-                    style={styles.image}
-                    name={data.icon}
-                    size={100}
-                    color="#CEF202"
-                />
+            
+            <GestureDetector gesture={swipes}>
+            
+            <Animated.View 
+            style={styles.pageContent}
+            key={screenIndex}
+            >
+                <Animated.View
+                entering={BounceIn}
+                >
+                    <FontAwesome5
+                        style={styles.image}
+                        name={data.icon}
+                        size={150}
+                        color="#CEF202"
+                    />
+                </Animated.View>
+                
 
                 <View style={styles.footer}>
-                    <Text style={styles.title}>{data.title}</Text>
-                    <Text style={styles.description}>{data.description}</Text>
+                    <Animated.Text 
+                    entering={SlideInLeft}
+                    style={styles.title}>{data.title}</Animated.Text>
+                    
+                    <Animated.Text 
+                    entering={SlideInRight.delay(100)}
+                    style={styles.description}>{data.description}</Animated.Text>
                     <View style={styles.buttonsRow}>
                         <Text onPress={endOnboarding} style={styles.buttonText}>Skip</Text>
                         <TouchableOpacity
@@ -88,7 +116,7 @@ export default function OnboardingScreen() {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+            </Animated.View>
             </GestureDetector>
         </SafeAreaView>
     );
@@ -107,8 +135,7 @@ const styles = StyleSheet.create({
     },
     image: {
         alignSelf: 'center',
-        margin: 20,
-        marginTop: 30
+        marginTop: 70
     },
     title: {
         color: '#FDFDFD',

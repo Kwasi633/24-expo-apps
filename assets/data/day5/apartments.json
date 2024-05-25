@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "latitude": 5.603716,
+      "longitude": -0.187000,
+      "price": 75,
+      "title": "Cozy Studio Apartment in Osu",
+      "numberOfStars": 4,
+      "rating": 4.5,
+      "image": "https://example.com/image1.jpg"
+    },
+    {
+      "id": 2,
+      "latitude": 5.558068,
+      "longitude": -0.205485,
+      "price": 120,
+      "title": "Luxury 2-Bedroom Condo in Airport Residential",
+      "numberOfStars": 5,
+      "rating": 4.9,
+      "image": "https://example.com/image2.jpg"
+    },
+    {
+      "id": 3,
+      "latitude": 5.614818,
+      "longitude": -0.205874,
+      "price": 60,
+      "title": "Charming 1-Bedroom Apartment in Labone",
+      "numberOfStars": 3,
+      "rating": 4.2,
+      "image": "https://example.com/image3.jpg"
+    },
+    {
+      "id": 4,
+      "latitude": 5.570457,
+      "longitude": -0.207703,
+      "price": 100,
+      "title": "Modern 3-Bedroom House in East Legon",
+      "numberOfStars": 4,
+      "rating": 4.6,
+      "image": "https://example.com/image4.jpg"
+    },
+    {
+      "id": 5,
+      "latitude": 5.565503,
+      "longitude": -0.177078,
+      "price": 85,
+      "title": "Spacious 2-Bedroom Apartment in Cantonments",
+      "numberOfStars": 4,
+      "rating": 4.4,
+      "image": "https://example.com/image5.jpg"
+    }
+  ]
+  

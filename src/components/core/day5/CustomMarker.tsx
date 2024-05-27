@@ -7,6 +7,7 @@ const CustomMarker = (props) => {
   return (
     <View>
      <Marker 
+            onPress={props.onPress}
             key={props.id}
             coordinate={{ 
                 latitude: props.latitude, 

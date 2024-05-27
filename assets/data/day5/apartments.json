@@ -45,7 +45,27 @@
       "longitude": -0.177078,
       "price": 85,
       "title": "Spacious 2-Bedroom Apartment in Cantonments",
+      "numberOfStars": 5,
+      "rating": 4.8,
+      "image": "https://example.com/image5.jpg"
+    },
+    {
+      "id": 6,
+      "latitude": 5.565588,
+      "longitude": -0.177099,
+      "price": 185,
+      "title": "Spacious 3-Bedroom Apartment in Legon",
       "numberOfStars": 4,
+      "rating": 4.4,
+      "image": "https://example.com/image5.jpg"
+    },
+    {
+      "id": 7,
+      "latitude": 5.565496,
+      "longitude": -0.177024,
+      "price": 250,
+      "title": "Executive Penthouse in Achimota",
+      "numberOfStars": 5,
       "rating": 4.4,
       "image": "https://example.com/image5.jpg"
     }

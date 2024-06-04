@@ -5,7 +5,7 @@ type DayListItem = {
     day: number;
 }
 
-export const DayListItem = ({ day }: DayListItem) => {
+const DayListItem = ({ day }: DayListItem) => {
     return(
         <Link href={`/day${day}`} asChild>
           <TouchableOpacity style={styles.box}>
@@ -35,3 +35,4 @@ const styles = StyleSheet.create({
   
   });
   
+  export default DayListItem;

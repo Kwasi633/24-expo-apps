@@ -5,19 +5,19 @@ import { Stack, Link } from 'expo-router';
 import MarkdownDisplay from '@/components/core/day3/MarkdownDisplay';
 
 const description = `
-# Tinder Swipe Animation
+# Weather App
+Fetch weather data and display it
 `
-
 
 const DayDetailsScreen = () => {
   return (
     <SafeAreaView edges={['bottom']} style={{flex: 1}}>
-      <Stack.Screen options={{title: 'Day6: Tinder'}}/>
+      <Stack.Screen options={{title: 'Day8: Weather app'}}/>
       
     <MarkdownDisplay>{description}</MarkdownDisplay>
     
-    <Link href="/day6/tinder" asChild>
-    <Button title='Go to Tinder Swipe Animation'/>
+    <Link href="/day8/weather" asChild>
+    <Button title='Go to Weather'/>
     </Link>
     
     </SafeAreaView>

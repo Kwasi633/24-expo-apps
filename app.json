@@ -29,10 +29,22 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Fingerprint to unlock protected screen"
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
     ],
-      "experiments": {
-         "tsconfigPaths": true
-      }
+    "experiments": {
+      "tsconfigPaths": true
+    }
   }
 }

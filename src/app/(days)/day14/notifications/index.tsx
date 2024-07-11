@@ -18,13 +18,12 @@ const NotificationsHomeScreen = () => {
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "You've got mail! 📬",
+      title: "Checkout Tinder Swipe project!  📬",
       body: 'Here is the notification body',
-      data: { data: 'goes here', test: { test1: 'more data' } },
+      data: { data: 'goes here', url: '/day14/notifications' },
     },
     trigger: { seconds: 10 },
   });
 }
-
 
 export default NotificationsHomeScreen;

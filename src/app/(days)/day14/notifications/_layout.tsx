@@ -1,6 +1,6 @@
 import { Platform, View, Text } from 'react-native'
 import React, {useEffect, useState, useRef} from 'react'
-import { Slot } from 'expo-router'
+import { Slot, router } from 'expo-router'
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { AntDesign } from '@expo/vector-icons';
@@ -29,6 +29,10 @@ const AppWithNotificationsLayout = () => {
             setNotification(notification);
           });
 
+          responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
+            redirect(response.notification);
+          });
+
           return () => {
             notificationListener.current &&
               Notifications.removeNotificationSubscription(notificationListener.current);
@@ -37,6 +41,13 @@ const AppWithNotificationsLayout = () => {
           };
 
     }, [])
+
+    function redirect(notification: Notifications.Notification) {
+      const url = notification.request.content.data?.url;
+      if (url) {
+        router.push(url);
+      }
+    }
 
     console.log("Token:", expoPushToken)
     console.log(notification)

@@ -1,2 +1,2 @@
-# 24-expo-projects
-Developing mobile app projects using react-native and expo.
+# 24-expo-apps
+Developing mobile app of different functionalities using react-native and expo.
